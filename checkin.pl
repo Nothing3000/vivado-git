@@ -41,7 +41,7 @@ for my $ProjectPath (glob("workspace/*/*.xpr")) {
 	printf "~~~\n";
 	printf "~~~ Exporting Project TCL from Vivado\n";
 	open(VIVADO, '|-', 'vivado', '-nojournal', '-nolog', '-mode', 'tcl', $ProjectPath);
-	printf VIVADO "write_project_tcl -force \".exported.tcl\"\n";
+	printf VIVADO "write_project_tcl -force -use_bd_files \".exported.tcl\"\n";
 
 	printf VIVADO "foreach {bd_file} [get_files -filter {FILE_TYPE == \"Block Designs\"}] {\n";
 	printf VIVADO "	open_bd_design \$bd_file\n";
